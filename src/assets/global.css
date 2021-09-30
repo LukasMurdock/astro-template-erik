@@ -1,0 +1,95 @@
+:root {
+  font-family: 'Inter', sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+  :root {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/fonts/Fraunces-Var.woff2') format('woff2');
+  font-named-instance: 'Regular';
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144, 'wght' 100;
+}
+
+@font-face {
+  font-family: 'Fraunces';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/fonts/Fraunces-Italic-Var.woff2') format('woff2');
+  font-named-instance: 'Italic';
+  font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144, 'wght' 100;
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/fonts/Inter-roman.var.woff2') format('woff2');
+  font-named-instance: 'Regular';
+}
+
+@font-face {
+  font-family: 'Inter';
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('/assets/fonts/Inter-italic.var.woff2') format('woff2');
+  font-named-instance: 'Italic';
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .wonk-heading {
+    font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 36, 'wght' 300;
+  }
+
+  .wonk-super {
+    font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 144, 'wght' 300;
+  }
+
+  .wonk-small {
+    font-variation-settings: 'SOFT' 100, 'WONK' 1, 'opsz' 16, 'wght' 600;
+  }
+}
+
+/* @layer utilities {
+  .font-thin {
+    font-variation-settings: 'wght' 100;
+  }
+  .font-extralight {
+    font-variation-settings: 'wght' 200;
+  }
+  .font-light {
+    font-variation-settings: 'wght' 300;
+  }
+  .font-normal {
+    font-variation-settings: 'wght' 400;
+  }
+  .font-medium {
+    font-variation-settings: 'wght' 500;
+  }
+  .font-semibold {
+    font-variation-settings: 'wght' 600;
+  }
+  .font-bold {
+    font-variation-settings: 'wght' 700;
+  }
+  .font-extrabold {
+    font-variation-settings: 'wght' 800;
+  }
+  .font-black {
+    font-variation-settings: 'wght' 900;
+  }
+} */

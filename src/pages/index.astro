@@ -1,0 +1,57 @@
+---
+// Component Imports
+import BaseHead from '../components/BaseHead.astro';
+import BlogHeader from '../components/BlogHeader.astro';
+import BlogPostPreview from '../components/BlogPostPreview.astro';
+
+interface MarkdownFrontmatter {
+  publishDate: number;
+}
+
+// Component Script:
+// You can write any JavaScript/TypeScript that you'd like here.
+// It will run during the build, but never in the browser.
+// All variables are available to use in the HTML template below.
+let title = 'Erik Johnson';
+let heading = 'I’m Erik Johnson, a security researcher from Chicago, IL. I’m currently a sophomore at Miami University studying computer engineering.'
+let description = 'This blog was created in an attempt to benchmark and progress my understanding of technology as well as assist others in their quest to do the same. In order to progress ones own thoughts they must incorporate the thoughts of others - and with regards to that fact I seek to share and collaborate with anyone willing.';
+let permalink = 'https://example.com/';
+
+// Data Fetching: List all Markdown posts in the repo.
+
+let allPosts = Astro.fetchContent<MarkdownFrontmatter>('./posts/*.md');
+allPosts = allPosts.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+// let allProjects = Astro.fetchContent<MarkdownFrontmatter>('./projects/*.md');
+// allProjects = allProjects.sort((a, b) => new Date(b.publishDate).valueOf() - new Date(a.publishDate).valueOf());
+
+// Full Astro Component Syntax:
+// https://docs.astro.build/core-concepts/astro-components/
+---
+
+<html lang="en" class="bg-red-50">
+  <head>
+    <BaseHead title={title} description={description} permalink={permalink} />
+    <link rel="stylesheet" href={Astro.resolve("../assets/global.css")} />
+  </head>
+
+  <body>
+    <BlogHeader class="max-w-4xl"/>
+    <div class="layout">
+      <article class="content">
+        <section class="max-w-6xl p-6 m-auto prose">
+          <h1 class="mt-1 text-2xl font-normal leading-snug text-indigo-600 md:text-3xl md:leading-snug">{heading}</h1>
+          <div class="grid-cols-2 sm:grid">
+            <p class="max-w-lg text-indigo-600">{description}</p>
+            <img width="100%" height="500" class="m-0" loading="lazy" src="/images/erik-big-profile.jpeg" alt="" />
+          </div>
+        </section>
+        <section class="max-w-6xl m-auto mt-6 prose">
+        <h2 class="max-w-lg px-6 font-serif text-base font-black tracking-widest text-indigo-600 wonk-small">posts</h2>
+        <div class="max-w-lg">
+          {allPosts.map(p => <BlogPostPreview post={p} />)}
+          </div>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>
